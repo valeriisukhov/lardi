@@ -15,7 +15,7 @@
 	</prerequisites>
 	<scm>
 		<developerConnection>Valerii Sukhov</developerConnection>
-		<url>https://theroux@bitbucket.org/theroux/lardi.git</url>
+		<url>git@github.com:valeriisukhov/lardi.git</url>
 	</scm>
 
 	<parent>
