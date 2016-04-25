@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lardi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .error {
+            color:red;
+            display:none;
+            margin:0 auto;
+            text-align:center;
+        }
+    </style>
+    <script src="../js/jquery-2.2.3.min.js" type="text/javascript" charset="UTF-8"></script>
+    <style>
+        th,tr,td {
+            vertical-align: middle !important;
+        }
+        table > thead > tr > th {
+            border-bottom: none !important;
+        }
+    </style>
+    <script type="text/javascript" th:inline="javascript">
+        var theList = [[${list}]];
+        var list = JSON.parse(theList);
+        list.sort(function (a, b) {
+            if (a.id > b.id) {
+                return 1;
+            }
+            if (a.id < b.id) {
+                return -1;
+            }
+            return 0;
+        });
+    </script>
+    <script src="../js/index.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Home</a>
+            <ul class="nav navbar-nav">
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container col-lg-12">
+    <div id="upperBlock" class="form-horizontal col-lg-10">
+        <div class="col-md-2">
+            <button id="addNewContact" class="btn btn-default" style="margin-bottom: 1em;">Create Contact</button>
+        </div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" id="filter" placeholder="Find contact">
+        </div>
+    </div>
+    <div class="col-lg-6" id="newContactForm" style="display:none;margin-bottom: 2em;">
+        <input id="currentContactId" style="display:none;">
+        <div class="form-group">
+            <label for="newContactLastName">Last name:</label>
+            <input type="text" class="form-control" id="newContactLastName" required="">
+        </div>
+        <div class="form-group">
+            <label for="newContactFirstName">First name:</label>
+            <input type="text" class="form-control"id="newContactFirstName" required="">
+        </div>
+        <div class="form-group">
+            <label for="newContactForeName">Fore name:</label>
+            <input type="text" class="form-control" id="newContactForeName" required="">
+        </div>
+        <div class="form-group">
+            <label for="newContactMobile">Mobile phone (example: +380671112233):</label>
+            <input type="text" class="form-control" id="newContactMobile" required="">
+        </div>
+        <div class="form-group">
+            <label for="newContactHome">Home phone:</label>
+            <input type="text" class="form-control" id="newContactHome" required="">
+        </div>
+        <div class="form-group">
+            <label for="newContactAddress">Address:</label>
+            <input type="text" class="form-control" id="newContactAddress">
+        </div>
+        <div class="form-group">
+            <label for="newContactEmail">Email:</label>
+            <input type="text" class="form-control" id="newContactEmail">
+        </div>
+        <div class="error" id="errorMessage">
+            Wrong Data!
+        </div>
+        <button id="saveNewContact" class="btn btn-success">Save Contact</button>
+        <button id="editContact" class="btn btn-success" style="display:none;">Save Changes</button>
+        <button id="cancelSaving" class="btn btn-danger" style="margin-left:3em;">Cancel</button><br>
+    </div>
+    <table class="table table-hover" id="contacts" style="display: none;">
+        <thead>
+            <tr>
+                <th class="col-md-1">#</th>
+                <th class="col-md-1">Last Name</th>
+                <th class="col-md-1">First Name</th>
+                <th class="col-md-1">Fore Name</th>
+                <th class="col-md-1">Mobile Phone</th>
+                <th class="col-md-1">Home Phone</th>
+                <th class="col-md-1">Address</th>
+                <th class="col-md-1">E-mail</th>
+                <th class="col-md-1"></th>
+                <th class="col-md-1"></th>
+            </tr>
+        </thead>
+        <tbody id="contactsBody">
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
