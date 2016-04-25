@@ -1,3 +1,5 @@
+Used technologies: Spring Boot, JQuery, Twitter Bootstrap, Maven, MySQL, Thymeleaf
+
 Type your properties file to VM options like this: "-Dlardi.conf=/path/to/file.properties"
 
 Before start create some test db.
